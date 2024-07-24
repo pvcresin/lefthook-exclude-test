@@ -1,0 +1,14 @@
+---
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.js"
+      # exclude: "b.js|c.js" # worked correctly
+      exclude:
+        - b.js
+        - c.js
+      run: |
+        echo {staged_files}
+        npx prettier --write {staged_files}
+      stage_fixed: true
